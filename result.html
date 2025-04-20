@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Result</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .stars {
+            font-size: 1.6em;
+            color: gold;
+            letter-spacing: 3px;
+            animation: pulse 1.2s ease-in-out infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Review:</h2>
+        <p>{{ review }}</p>
+        <h3>Predicted Sentiment:</h3>
+        <p>{{ prediction }}</p>
+        <h3>Your Rating:</h3>
+        <p class="stars">
+            {% for i in range(1, 6) %}
+                {% if i <= rating|int %}★{% else %}☆{% endif %}
+            {% endfor %}
+        </p>
+        <h3>Logical Feedback:</h3>
+        <p>
+            {% if rating|int >= 4 %}
+                Thanks for the high rating! 🌟 It looks like you had a great time. We’d love to hear more about your positive experiences!
+            {% elif rating|int == 3 %}
+                Sounds like it was an average experience. 😐 Maybe a few things could be improved?
+            {% elif rating|int == 2 %}
+                Sorry to hear it didn’t quite meet expectations. 😕 Your review helps us do better!
+            {% else %}
+                Oh no! 😞 It seems like your experience was quite disappointing. Thanks for sharing — we’ll learn from it!
+            {% endif %}
+        </p>
+        <h3>Your Feedback:</h3>
+        <p>{{ feedback }}</p>
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>

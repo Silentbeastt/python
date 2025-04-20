@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Review Sentiment</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        .switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</head>
+<body>
+    <div class="switch">
+        <label>
+            <input type="checkbox" onclick="toggleDarkMode()"> Dark Mode
+        </label>
+    </div>
+    <div class="container">
+        <h1>Travel Review Sentiment Analyzer</h1>
+        <form action="/predict" method="post">
+            <textarea name="review" placeholder="Enter your travel review here..." required></textarea>
+            <label for="rating">Give a Star Rating:</label>
+            <select name="rating" id="rating" required>
+                <option value="1">★☆☆☆☆ (1)</option>
+                <option value="2">★★☆☆☆ (2)</option>
+                <option value="3">★★★☆☆ (3)</option>
+                <option value="4">★★★★☆ (4)</option>
+                <option value="5">★★★★★ (5)</option>
+            </select>
+            <label for="feedback">Additional Feedback (Optional):</label>
+            <textarea name="feedback" placeholder="Any extra feedback?"></textarea>
+            <button type="submit">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>
